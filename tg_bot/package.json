@@ -9,11 +9,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.21"
+    "nodemon": "^2.0.22"
   },
   "dependencies": {
     "dotenv": "^16.0.3",
+    "superagent": "^8.0.9",
     "telegraf": "^4.12.2"
   }
-  
 }

@@ -1,16 +1,27 @@
 const { Telegraf } = require('telegraf');
 const { message } = require('telegraf/filters');
-const { Stage } = require("telegraf/stage")
+const superagent = require('superagent');
 const texts_template = require('./texts')
-require('dotenv').config()
+let class_templates = require('./class_templates')
+require('dotenv').config({path:__dirname+'/.env'})
+
+const link = 'http://localhost:3000'
+
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
 let isAdmin = false
 let isMod = false
 
-bot.start((ctx) => {
-    console.log(ctx.chat)
+
+bot.start(async (ctx) => {
+    let user = await new class_templates.User(ctx.chat.id, ctx.chat.username)
+    try {
+        const res = await superagent.post(link+'/user').send(user)
+        console.log(res.body);
+    } catch (err) {
+        console.error(err);
+    }
     if(!isAdmin){
         ctx.reply(texts_template.welcome_msg_for_user)
     }
@@ -22,8 +33,14 @@ bot.help((ctx) => {
     }
 });
 
-bot.command('myapps', (ctx) => {
-    
+bot.command('myapps', async (ctx) => {
+    let apps;
+    try {
+        const res = await superagent.get(link+'/user').send({Tgid: ctx.chat.id})
+        console.log(res.body);
+    } catch (err) {
+        console.error(err);
+    }
 })
 
 bot.on(message('document'), async (ctx) => {
