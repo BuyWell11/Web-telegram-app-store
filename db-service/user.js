@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-const AppSchema = require('./app')
 
 const UserSchema = new mongoose.Schema({
     Tgid: Number,

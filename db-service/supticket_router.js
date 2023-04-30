@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     let sup_tickets = await SupTicket.find().sort({Date: 1})
     if(apps.length() == 0){
-        res.status(200).json({Error: "No sup tickets"})
+        res.status(200).json({err: "No sup tickets"})
     }
     else{
         res.status(200).json(sup_tickets[0])
