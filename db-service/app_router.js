@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 //ничего не передаётся
 router.get('/all', async (req, res) => {
     let apps = await App.find({OnMarket: true})
-    if(apps.length() == 0){
+    if(apps.length == 0){
         res.status(200).json({err: "No apps"})
     }
     else{
@@ -24,7 +24,7 @@ router.get('/all', async (req, res) => {
 //ничего не передаётся
 router.get('/datesorted', async (req, res) => {
     let apps = await App.find({OnMarket: true}).sort({ReleasDate: -1})
-    if(apps.length() == 0){
+    if(apps.length == 0){
         res.status(200).json({err: "No apps"})
     }
     else{
@@ -35,7 +35,7 @@ router.get('/datesorted', async (req, res) => {
 //ничего не передаётся
 router.get('/downloadsorted', async (req, res) => {
     let apps = await App.find({OnMarket: true}).sort({Downloads: -1})
-    if(apps.length() == 0){
+    if(apps.length == 0){
         res.status(200).json({err: "No apps"})
     }
     else{
