@@ -5,7 +5,7 @@ const router = express.Router();
 //ничего не передаётся
 router.get('/', async (req, res) => {
     let sup_tickets = await SupTicket.find().sort({Date: 1})
-    if(apps.length() == 0){
+    if(apps.length == 0){
         res.status(200).json({err: "No sup tickets"})
     }
     else{
