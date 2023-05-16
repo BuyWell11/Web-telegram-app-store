@@ -248,7 +248,7 @@ async function makeInlineKeyboard(app_ids){
     let count = Math.ceil(app_ids.length/3);
     for(let i = 0; i < app_ids.length; i++){
         let app = await superagent.get(link+'/app').send({id: app_ids[i].toString()});
-        temp_arr.push({text: app.body.Name, web_app: app.body.Link});
+        temp_arr.push({text: app.body.Name, url: app.body.Link});
         apps.push(app.body)
     }
     for(let i = 0; i < count; i++){
