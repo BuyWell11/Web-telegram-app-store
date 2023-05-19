@@ -114,7 +114,7 @@ router.delete('/', async (req, res) => {
     let app_index = user.OwnApps.indexOf(app._id)
     user.OwnApps.splice(app_index, app_index)
     await user.save()
-    await App.findOneAndDelete(req.body)
+    await App.findOneAndDelete(app)
     res.status(200).json(app)
 });
 

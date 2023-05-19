@@ -1,7 +1,7 @@
 FROM node:alpine
 WORKDIR /app
-EXPOSE 5050
+EXPOSE 3000
 COPY . .
 RUN npm install
-ENTRYPOINT [ "npm" ]
-CMD [ "start" ]
+ENTRYPOINT [ "node" ]
+CMD [ "index.js" ]

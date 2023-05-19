@@ -6,7 +6,7 @@ const SupTicketRouter = require('./supticket_router')
 require('dotenv').config({path:__dirname+'/.env'});
 
 const app = express();
-const port = 5050;
+const port = 3000;
 
 let bodyParser = require('body-parser');
 app.use(bodyParser.json());
