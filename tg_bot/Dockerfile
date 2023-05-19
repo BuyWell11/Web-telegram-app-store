@@ -2,5 +2,5 @@ FROM node:alpine
 WORKDIR /app
 COPY . .
 RUN npm install
-ENTRYPOINT [ "npm" ]
-CMD [ "start" ]
+ENTRYPOINT [ "node" ]
+CMD [ "index.js" ]
